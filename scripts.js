@@ -1,6 +1,115 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const audioPlayer = new Audio(); // AGORA EXISTE
+    const audioPlayer = new Audio(); 
+    
+    // ===== Biblioteca expandida =====
+const library = document.querySelector('.nav-library');
+const libraryOptions = document.querySelector('.library-options');
+
+library.addEventListener('click', () => {
+    if(libraryOptions.style.display === 'block') {
+        libraryOptions.style.display = 'none';
+    } else {
+        libraryOptions.style.display = 'block';
+    }
+});
+
+ 
+const openPlaylist = document.getElementById("openPlaylist");
+const playlistPopup = document.getElementById("playlistPopup");
+const closePlaylist = document.getElementById("closePlaylist");
+const savePlaylistBtn = document.getElementById("savePlaylist");
+const notification = document.getElementById("notification");
+
+savePlaylistBtn.addEventListener("click", () => {
+    // Aqui você poderia salvar o nome da playlist se quisesse
+    const playlistName = document.querySelector("#playlistPopup input").value;
+    console.log("Playlist salva:", playlistName); // só pra teste
+
+    // Mostrar notificação
+    notification.classList.add("show");
+
+    // Esconder depois de 5 segundos
+    setTimeout(() => {
+        notification.classList.remove("show");
+    }, 5000);
+
+    // Fechar popup
+    playlistPopup.style.display = "none";
+});
+
+const langButton = document.getElementById("langButton");
+const langMenu = document.getElementById("langMenu");
+
+langButton.addEventListener("click", () => {
+    if (langMenu.style.display === "flex") {
+        langMenu.style.display = "none";
+    } else {
+        langMenu.style.display = "flex";
+    }
+});
+
+// Clicar fora fecha o menu
+document.addEventListener("click", (e) => {
+    if (!langButton.contains(e.target) && !langMenu.contains(e.target)) {
+        langMenu.style.display = "none";
+    }
+});
+
+// Mostrar no console qual idioma foi selecionado (aqui é só teste)
+langMenu.querySelectorAll("p").forEach(p => {
+    p.addEventListener("click", () => {
+        console.log("Idioma selecionado:", p.dataset.lang);
+        langMenu.style.display = "none";
+        langButton.innerHTML = `<i class="fa-solid fa-globe"></i> ${p.textContent}`;
+    });
+});
+
+
+
+let translations = {};
+
+fetch('translations.json')
+  .then(res => res.json())
+  .then(data => {
+    translations = data;
+    setLanguage('pt'); // inicializa em português
+  });
+
+
+openPlaylist.addEventListener("click", () => {
+    playlistPopup.style.display = "flex";
+});
+
+closePlaylist.addEventListener("click", () => {
+    playlistPopup.style.display = "none";
+});
+
+// Fechar clicando fora da caixa
+playlistPopup.addEventListener("click", (e) => {
+    if(e.target === playlistPopup) playlistPopup.style.display = "none";
+});
+
+
+// ===== Pesquisa popup =====
+const searchInput = document.querySelector('.search-bar input');
+const searchPopup = document.getElementById('searchPopup');
+const closeSearch = document.getElementById('closeSearch');
+
+searchInput.addEventListener('click', () => {
+    searchPopup.style.display = 'flex';
+});
+
+// Fechar popup
+closeSearch.addEventListener('click', () => {
+    searchPopup.style.display = 'none';
+});
+
+// Fechar clicando fora da caixa
+searchPopup.addEventListener('click', (e) => {
+    if(e.target === searchPopup) searchPopup.style.display = 'none';
+});
+
 
     const artistsData = [
         { name: 'Henrique e Juliano', image: 'img/artista-henrique-juliano.jpg', audio: 'msc/Henrique-Juliano.mp3' },
@@ -12,12 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const albumsData = [
-        { name: 'White Noise (Sleep & Relaxation Sounds)', artist: 'Sleep John', image: 'img/album-white-noise.jpg', audio: 'msc/White-Noise.mp3' },
-        { name: 'O Céu Explica Tudo (Ao Vivo)', artist: 'Henrique & Juliano', image: 'img/album-ceu-explica.jpg', audio: 'msc/Ceu-Explica.mp3' },
-        { name: 'Nada como um dia após o outro', artist: 'Racionais', image: 'img/album-vida-loka.jpg', audio: 'msc/Vida-Loka.mp3' },
-        { name: 'HIT ME HARD AND SOFT ', artist: 'Billie Eilish', image: 'img/album-hit-me.jpg', audio: 'msc/Hit-Me.mp3' },
-        { name: 'CAJU', artist: 'Liniker', image: 'img/album-caju.jpg', audio: 'msc/Caju.mp3' },
-        { name: 'Escândalo Íntimo', artist: 'Luisa Sonza', image: 'img/album-escandalo.jpg', audio: 'msc/Escandalo.mp3' },
+        { name: '333', artist: 'Matuê', image: 'img/album-matue.jpeg', audio: 'msc/Matuê.mp3' },
+        { name: 'O Céu Explica Tudo (Ao Vivo)', artist: 'Henrique & Juliano', image: 'img/album-ceu-explica.jpg', audio: 'msc/Henrique-Juliano2.mp3' },
+        { name: 'Nada como um dia após o outro', artist: 'Racionais', image: 'img/album-vida-loka.jpg', audio: 'msc/Racionais.mp3' },
+        { name: 'HIT ME HARD AND SOFT ', artist: 'Billie Eilish', image: 'img/album-hit-me.jpg', audio: 'msc/Billie-eilish.mp3' },
+        { name: 'Caos', artist: 'Alee', image: 'img/album-alee.jpg', audio: 'msc/Alee.mp3' },
+        { name: 'SEMRÉH', artist: 'Ryu, The Runner', image: 'img/album-ryu.jpg', audio: 'msc/Ryu.mp3' },
     ];
 
     const artistGrid = document.querySelector('.artists-grid');

@@ -14,40 +14,60 @@
             <div class="nav-logo">
                 <i class="fa-brands fa-spotify"></i>
             </div>
+
+            <!-- Biblioteca -->
             <div class="nav-library">
                 <i class="fa-solid fa-book"></i>
-                <p>Sua Biblioteca +</p>
+                <p class="lang" data-key="library">Sua Biblioteca</p>
+                <div class="library-options">
+                    <p class="lang" data-key="likedSongs">Músicas Curtidas</p>
+                    <p class="lang" data-key="myPlaylists">Minhas Playlists</p>
+                </div>
             </div>
+
+            <!-- Playlist -->
             <div class="nav-playlist">
                 <h5>Crie sua Primeira Playlist</h5>
                 <p>É fácil, vamos te ajudar</p>
-                <button>Criar Playlist</button>
+                <button id="openPlaylist">Criar Playlist</button>
             </div>
+
+            <!-- Podcast -->
             <div class="nav-podcast">
                 <h5>Que tal Seguir um Podcast?</h5>
-                <p>Avisaremos você sobre nosso espisódios</p>
+                <p>Avisaremos você sobre nossos espisódios</p>
                 <button>Explore Podcasts</button>
             </div>
+
+            <!-- Footer -->
             <div class="nav-footer">
-                    <a href="#">Legal</a>
-                    <a href="#">Centro de Privacidade</a>
-                    <a href="#">Plítica de privacidade</a>
-                    <a href="#">Cookies</a>
-                    <a href="#">Sobre Anúncios</a>
-                    <a href="#">Acessibilidade</a>        
+                <a href="#">Legal</a>
+                <a href="#">Centro de Privacidade</a>
+                <a href="#">Plítica de privacidade</a>
+                <a href="#">Cookies</a>
+                <a href="#">Sobre Anúncios</a>
+                <a href="#">Acessibilidade</a>        
             </div>
-            <button class="nav-lang-button">
-                <i class="fa-solid fa-globe"></i>
-                Português do Brasil
+
+            <!-- Idioma -->
+            <button class="nav-lang-button" id="langButton">
+                <i class="fa-solid fa-globe"></i> Português do Brasil
             </button>
+            <div id="langMenu" class="lang-menu">
+                <p data-lang="pt">Português do Brasil</p>
+                <p data-lang="en">English</p>
+                <p data-lang="es">Español</p>
+            </div>
         </nav>
+
         <main>
             <header>
                 <div class="search-bar">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input placeholder="O que você quer ouvir?">
+                    <input placeholder="O que você quer ouvir?" id="searchInput" class="lang" data-key="searchPlaceholder">
                 </div>
-            </header>            
+            </header>
+
             <section class="content">
                 <h2>Artistas Populares</h2>
                 <div class="artists-grid"></div>
@@ -60,13 +80,33 @@
 
     <div class="banner">
         <div class="banner-text">
-            <h2>Testar o Premium de graça</h2>
+            <h2 class="lang" data-key="premiumBanner">Testar o Premium de graça</h2>
             <p>Inscreva-se para curtir músicas ilimitadas com poucos anúncios. Não precisa cartão.</p>
         </div>
         <button>Inscrever-se Grátis</button>
-    </div>    
+    </div>
+
+    <!-- Popup Pesquisa -->
+    <div class="search-popup" id="searchPopup">
+        <div class="search-box">
+            <input type="text" placeholder="Digite sua pesquisa...">
+            <button id="closeSearch">Pesquisar</button>
+        </div>
+    </div>
+
+    <!-- Popup Playlist -->
+    <div class="playlist-popup" id="playlistPopup">
+        <div class="playlist-box">
+           <h3>Nova Playlist</h3>
+           <input type="text" placeholder="Nome da playlist...">
+           <button id="savePlaylist">Salvar</button>
+           <button id="closePlaylist">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Notificação -->
+    <div id="notification" class="notification">Playlist salva!</div>
 
     <script src="./scripts.js"></script>
 </body>
-
 </html>

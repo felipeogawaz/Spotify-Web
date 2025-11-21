@@ -1,0 +1,23 @@
+{
+  "pt": {
+    "library": "Sua Biblioteca",
+    "likedSongs": "Músicas Curtidas",
+    "myPlaylists": "Minhas Playlists",
+    "searchPlaceholder": "O que você quer ouvir?",
+    "premiumBanner": "Testar o Premium de graça"
+  },
+  "en": {
+    "library": "Your Library",
+    "likedSongs": "Liked Songs",
+    "myPlaylists": "My Playlists",
+    "searchPlaceholder": "What do you want to listen to?",
+    "premiumBanner": "Try Premium for free"
+  },
+  "es": {
+    "library": "Tu Biblioteca",
+    "likedSongs": "Canciones que te gustan",
+    "myPlaylists": "Mis listas de reproducción",
+    "searchPlaceholder": "¿Qué quieres escuchar?",
+    "premiumBanner": "Probar Premium gratis"
+  }
+}
